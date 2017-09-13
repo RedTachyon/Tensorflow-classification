@@ -78,7 +78,9 @@ def main():
     :return:
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('algorithm', help='Name of the algorithm to be used. Currently supported: logreg, NN, KNN')
+    parser.add_argument('algorithm',
+                        choices=['knn', 'nn', 'logreg'],
+                        help='Name of the algorithm to be used. Currently supported: logreg, nn, knn')
 
     parser.add_argument('-K', help='Value of K for the KNN algorithm', type=int, default=5)
     parser.add_argument('-H', '--n_hidden',
