@@ -12,6 +12,15 @@ from graph_constructor import LogisticGraph, TwoLayerNN, KNNGraph
 
 
 def train_and_validate(algorithm, K=5, H=100, num_iters=5000, beta=0.05):
+    """
+    Trains and validates the chosen model on the train, dev (aka validation) and test sets.
+    Args:
+        algorithm: one of 'logreg', 'knn', 'nn'
+        K: int, K in KNN algorithm
+        H: int, number of hidden layers in NN model
+        num_iters: int, number of training iterations in logreg and NN models
+        beta: L2 regularization coefficient for the NN model
+    """
     X_train, Y_train, X_dev, Y_dev = get_and_fix_data(X_path_train, Y_path_train, .15)
 
     X_test, Y_test, _, _ = get_and_fix_data(X_path_test, Y_path_test, 0)
@@ -73,10 +82,6 @@ def train_and_validate(algorithm, K=5, H=100, num_iters=5000, beta=0.05):
 
 
 def main():
-    """
-
-    :return:
-    """
     parser = argparse.ArgumentParser()
     parser.add_argument('algorithm',
                         choices=['knn', 'nn', 'logreg'],
